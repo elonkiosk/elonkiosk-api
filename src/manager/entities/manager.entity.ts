@@ -3,14 +3,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class Manager {
   @PrimaryGeneratedColumn()
-  managerNunber: number;
+  number: number;
 
   @Column()
-  managerName: string;
+  name: string;
 
   @Column()
-  managerId: string;
+  id: string;
 
   @Column()
-  managerPassword: string;
+  password: string;
 }
