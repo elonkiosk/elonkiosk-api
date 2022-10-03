@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prestart:prod": "rimraf dist && npm run build",
     "web": "npm run start:prod",
     "prebuild": "rimraf dist",
     "build": "nest build",
