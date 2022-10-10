@@ -19,5 +19,8 @@ export class Menu {
   price: number;
 
   @Column()
+  pic: string;
+
+  @Column()
   explanation: string;
 }

@@ -10,6 +10,7 @@ import {
 import { ManagerService } from './manager.service';
 import { CreateManagerDto } from './dto/create-manager.dto';
 import { UpdateManagerDto } from './dto/update-manager.dto';
+import { LoginManagerDto } from './dto/login-manger.dto';
 
 @Controller('manager')
 export class ManagerController {
@@ -27,16 +28,22 @@ export class ManagerController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.managerService.findOne(+id);
+    return this.managerService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateManagerDto: UpdateManagerDto) {
-    return this.managerService.update(+id, updateManagerDto);
+    return this.managerService.update(id, updateManagerDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.managerService.remove(+id);
+    return this.managerService.remove(id);
+  }
+
+  // login with id and password
+  @Post('login')
+  login(@Body() loginManagerDto: LoginManagerDto) {
+    return this.managerService.login(loginManagerDto);
   }
 }
