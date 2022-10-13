@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Store } from 'src/store/entities/store.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Manager {
@@ -13,4 +14,7 @@ export class Manager {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Store, (store) => store.manager)
+  stores: Store[];
 }
