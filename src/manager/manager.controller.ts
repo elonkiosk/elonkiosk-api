@@ -12,7 +12,7 @@ import { CreateManagerDto } from './dto/create-manager.dto';
 import { UpdateManagerDto } from './dto/update-manager.dto';
 import { LoginManagerDto } from './dto/login-manger.dto';
 
-@Controller('manager')
+@Controller('api/manager')
 export class ManagerController {
   constructor(private readonly managerService: ManagerService) {}
 
