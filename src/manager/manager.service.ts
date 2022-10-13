@@ -15,27 +15,22 @@ export class ManagerService {
 
   create(createManagerDto: CreateManagerDto) {
     return this.managerRepository.save(createManagerDto);
-    // return 'This action adds a new manager';
   }
 
   findAll() {
     return this.managerRepository.find();
-    // return `This action returns all manager`;
   }
 
   findOne(id: string) {
     return this.managerRepository.findOneBy({ id });
-    // return `This action returns a #${id} manager`;
   }
 
   update(id: string, updateManagerDto: UpdateManagerDto) {
     return this.managerRepository.update({ id: id }, updateManagerDto);
-    // return `This action updates a #${id} manager`;
   }
 
   remove(id: string) {
     return this.managerRepository.delete({ id: id });
-    // return `This action removes a #${id} manager`;
   }
 
   async login(loginManagerDto: LoginManagerDto) {
