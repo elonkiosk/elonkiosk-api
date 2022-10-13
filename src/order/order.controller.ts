@@ -39,4 +39,14 @@ export class OrderController {
   remove(@Param('id') id: string) {
     return this.orderService.remove(+id);
   }
+
+  @Get(':id/menus')
+  getMenus(@Param('id') id: string) {
+    return this.orderService.getMenus(+id);
+  }
+
+  @Get('/store/:id')
+  getOrderFromStore(@Param('id') id: string) {
+    return this.orderService.getOrderFromStore(+id);
+  }
 }

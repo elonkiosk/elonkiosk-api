@@ -4,6 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -16,9 +17,10 @@ export class Order {
   number: number;
 
   @ManyToOne(() => Store, (store) => store.orders)
+  @JoinColumn()
   store: Store;
 
-  @ManyToMany(() => Menu, (menu) => menu.orderlist)
+  @ManyToMany(() => Menu, (menu) => menu.orders)
   @JoinTable()
   menus: Menu[];
 

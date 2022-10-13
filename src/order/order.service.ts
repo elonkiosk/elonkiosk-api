@@ -16,10 +16,8 @@ export class OrderService {
     return this.orderRepository.save(createOrderDto);
   }
 
-  async findAll() {
-    return await this.orderRepository.find({
-      relations: ['menus'],
-    });
+  findAll() {
+    return this.orderRepository.find();
   }
 
   findOne(id: number) {
@@ -32,5 +30,24 @@ export class OrderService {
 
   remove(id: number) {
     return this.orderRepository.delete({ number: id });
+  }
+
+  async getMenus(id: number) {
+    const order = await this.orderRepository.find({
+      where: { number: id },
+      relations: ['menus'],
+    });
+    return order[0].menus;
+  }
+
+  public async getOrderFromStore(id: number) {
+    const qb = this.orderRepository
+      .createQueryBuilder('order')
+      .leftJoinAndSelect('order.store', 'store')
+      .where('store.number = :number', { number: id })
+      .leftJoinAndSelect('order.menus', 'menus')
+      .select(['order', 'menus'])
+      .getMany();
+    return qb;
   }
 }
