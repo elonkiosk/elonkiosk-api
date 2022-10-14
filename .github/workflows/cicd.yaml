@@ -6,8 +6,6 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
-    env:
-      S3_BUCKET: elon-kiosk-backend-bucket
     steps:
       - uses: actions/checkout@v3.0.1
 
@@ -44,7 +42,7 @@ jobs:
 
       - name: Create .env
         run: |
-          cat << EOF > .env
+          cat << EOF > prod.env
           ${{ secrets.ENVIRONMENTS }}
 
       - name: Packaging
