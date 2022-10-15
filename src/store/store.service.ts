@@ -44,4 +44,24 @@ export class StoreService {
     });
     return store[0].menus;
   }
+
+  async getCategorySet(id: number) {
+    const store = await this.storeRepository.find({
+      where: { number: id },
+      relations: ['menus'],
+    });
+    const categorySet = new Set();
+    store[0].menus.forEach((menu) => categorySet.add(menu.category));
+    return {
+      category: Array.from(categorySet),
+    };
+  }
+
+  async getMenusByCategory(id: number, category: string) {
+    const store = await this.storeRepository.find({
+      where: { number: id },
+      relations: ['menus'],
+    });
+    return store[0].menus.filter((menu) => menu.category === category);
+  }
 }

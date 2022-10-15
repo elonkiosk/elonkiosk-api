@@ -44,4 +44,17 @@ export class StoreController {
   getMenus(@Param('id') id: string) {
     return this.storeService.getMenus(+id);
   }
+
+  @Get(':id/category')
+  getCategorySet(@Param('id') id: string) {
+    return this.storeService.getCategorySet(+id);
+  }
+
+  @Get(':id/menus/:category')
+  getMenusByCategory(
+    @Param('id') id: string,
+    @Param('category') category: string,
+  ) {
+    return this.storeService.getMenusByCategory(+id, category);
+  }
 }
