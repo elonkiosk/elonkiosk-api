@@ -15,8 +15,5 @@ export class CreateMenuDto {
   price: number;
 
   @IsString()
-  pic: string;
-
-  @IsString()
   explanation: string;
 }
