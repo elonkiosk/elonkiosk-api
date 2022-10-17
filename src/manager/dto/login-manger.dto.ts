@@ -1,9 +1,6 @@
 import { IsString } from 'class-validator';
 
-export class CreateManagerDto {
-  @IsString()
-  readonly name: string;
-
+export class LoginManagerDto {
   @IsString()
   readonly id: string;
 

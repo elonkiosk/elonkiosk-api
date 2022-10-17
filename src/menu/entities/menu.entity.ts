@@ -1,5 +1,13 @@
+import { Order } from 'src/order/entities/order.entity';
 import { Store } from 'src/store/entities/store.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Menu {
@@ -7,6 +15,7 @@ export class Menu {
   number: number;
 
   @ManyToOne(() => Store, (store) => store.menus)
+  @JoinColumn()
   store: Store;
 
   @Column()
@@ -19,5 +28,11 @@ export class Menu {
   price: number;
 
   @Column()
+  pic: string;
+
+  @Column()
   explanation: string;
+
+  @ManyToMany(() => Order, (order) => order.menus)
+  orders: Order[];
 }

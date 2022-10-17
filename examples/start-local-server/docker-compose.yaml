@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.30
+    volumes:
+      - mysqldata:/var/lib/mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=toor"
+      - "MYSQL_DATABASE=elonkiosk"
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin
+    links:
+      - "mysql:db"
+    container_name: phpmyadmin
+    ports:
+      - 8080:80
+  apiserver:
+    image: haeramkeem/elon-kiosk-api
+    container_name: elonkiosk
+    environment:
+      - "DB_HOST=mysql"
+      - "DB_USERNAME=root"
+      - "DB_PASSWORD=toor"
+      - "DB_PORT=3306"
+      - "DB_NAME=elonkiosk"
+    ports:
+      - 3000:3000
+volumes:
+  mysqldata:

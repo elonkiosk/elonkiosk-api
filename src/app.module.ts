@@ -6,26 +6,26 @@ import { ConfigModule } from '@nestjs/config';
 import { ManagerModule } from './manager/manager.module';
 import { StoreModule } from './store/store.module';
 import { MenuModule } from './menu/menu.module';
-import { OrderlistModule } from './orderlist/orderlist.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      type: 'mysql',
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT) || 3306,
+      username: process.env.DB_USERNAME || 'root',
+      password: process.env.DB_PASSWORD || '3412',
+      database: process.env.DB_NAME || 'test',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: true, // 개발시에만 사용
       autoLoadEntities: true,
     }),
     ManagerModule,
     StoreModule,
     MenuModule,
-    OrderlistModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],

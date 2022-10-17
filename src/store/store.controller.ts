@@ -1,9 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { StoreService } from './store.service';
 import { CreateStoreDto } from './dto/create-store.dto';
 import { UpdateStoreDto } from './dto/update-store.dto';
 
-@Controller('store')
+@Controller('api/store')
 export class StoreController {
   constructor(private readonly storeService: StoreService) {}
 
@@ -30,5 +38,23 @@ export class StoreController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.storeService.remove(+id);
+  }
+
+  @Get(':id/menus')
+  getMenus(@Param('id') id: string) {
+    return this.storeService.getMenus(+id);
+  }
+
+  @Get(':id/category')
+  getCategorySet(@Param('id') id: string) {
+    return this.storeService.getCategorySet(+id);
+  }
+
+  @Get(':id/menus/:category')
+  getMenusByCategory(
+    @Param('id') id: string,
+    @Param('category') category: string,
+  ) {
+    return this.storeService.getMenusByCategory(+id, category);
   }
 }
