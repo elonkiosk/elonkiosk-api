@@ -45,10 +45,8 @@ export class ManagerController {
   @Post('login')
   login(@Body() loginManagerDto: LoginManagerDto) {
     return this.managerService.login(loginManagerDto);
-  }
-
+  
   @Get(':id/store')
   getStore(@Param('id') id: string) {
     return this.managerService.getStore(id);
-  }
 }

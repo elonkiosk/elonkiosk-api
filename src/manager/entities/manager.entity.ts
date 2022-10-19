@@ -21,7 +21,7 @@ export class Manager {
   @Column()
   password: string;
 
-  @OneToOne(() => Store, (store) => store.manager)
+@OneToOne(() => Store, (store) => store.manager)
   @JoinColumn()
   store: Store;
 }
