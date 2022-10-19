@@ -18,7 +18,7 @@ export class Store {
   @Column()
   name: string;
 
-  @ManyToOne(() => Manager, (manager) => manager.stores)
+  @ManyToOne(() => Manager, (manager) => manager.store)
   @JoinColumn()
   manager: Manager;
 
