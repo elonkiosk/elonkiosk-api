@@ -42,4 +42,12 @@ export class ManagerService {
       return false;
     }
   }
+
+  async getStore(id: string) {
+    const manager = await this.managerRepository.find({
+      where: { id: id },
+      relations: ['store'],
+    });
+    return manager[0].store.number;
+  }
 }
