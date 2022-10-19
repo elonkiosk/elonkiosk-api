@@ -20,7 +20,7 @@ export class Order {
   @JoinColumn()
   store: Store;
 
-  @ManyToMany(() => Menu, (menu) => menu.orders, { onDelete: 'CASCADE' })
+  @ManyToMany(() => Menu, (menu) => menu.orders)
   @JoinTable()
   menus: Menu[];
 

@@ -48,7 +48,6 @@ export class OrderService {
       .leftJoinAndSelect('order.menus', 'menus')
       .select(['order', 'menus'])
       .getMany();
-    const orderlist = (await qb).filter((order) => order.menus.length > 0);
-    return orderlist;
+    return qb;
   }
 }

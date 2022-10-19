@@ -33,6 +33,6 @@ export class Menu {
   @Column()
   explanation: string;
 
-  @ManyToMany(() => Order, (order) => order.menus, { onDelete: 'CASCADE' })
+  @ManyToMany(() => Order, (order) => order.menus)
   orders: Order[];
 }
