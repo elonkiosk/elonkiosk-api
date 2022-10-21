@@ -9,9 +9,9 @@ import * as AWS from 'aws-sdk';
 @Injectable()
 export class MenuService {
   s3 = new AWS.S3({
-    accessKeyId: 'AKIAUTXKF77DJHEYIJSR',
-    secretAccessKey: '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',
-    region: 'ap-northeast-2',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION,
   });
 
   constructor(
